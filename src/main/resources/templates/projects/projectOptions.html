@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>Facultad de Agronomía | Listado de Proyectos</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+	<main role="main">
+		<hr>
+		<div class="container">
+
+			<div th:if="${msgEliminar != null}" class="alert alert-success"
+				th:text="${msgEliminar}" role="alert"></div>
+
+			<div class="container">
+				<div class="card">
+					
+					<a th:href="@{/proyectos/nuevo-proyecto}" class="btn btn-success btn-sm" role="button" title="En Curso" sec:authorize="hasAnyAuthority('ADMINISTRADOR', 'ESTUDIANTE')">
+					   <h4 class="card-header"><strong>Nuevo</strong></h4>
+					</a>
+					
+					<a th:href="@{/proyectos/nuevo-proyecto}" class="btn btn-success btn-sm" role="button" title="Asignados" sec:authorize="hasAnyAuthority('ADMINISTRADOR', 'DOCENTE')">
+					   <h4 class="card-header"><strong>Asignados</strong></h4>
+					</a>
+					
+					<a th:href="@{/proyectos/todos-los-proyectos}" class="btn btn-success btn-sm" role="button" title="Asignados" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+					   <h4 class="card-header"><strong>Todos Los Proyectos</strong></h4>
+					</a>
+				</div>
+			</div>
+
+		</div>
+		<!-- /container -->
+	</main>
+
+	<footer class="footer">
+		<div class="container">
+			<p>
+				&copy; 2019 EmpleosApp, Inc. | WebApp Desarrollada con Spring Boot
+				2.1.2 | Autor: Iv&aacute;n E. Tinajero D&iacute;az | &middot; <a
+					href="#">Privacy</a> &middot; <a href="#">Terms</a>
+			</p>
+		</div>
+	</footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>Facultad de Agronomía | Listado de Proyectos</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/js/bootstrap.js}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+	<main role="main">
+	
+	<div th:if="${error != null}" class="alert alert-danger" th:text="${error}" role="alert"></div>
+	<div th:if="${ok != null}" class="alert alert-success" th:text="${ok}" role="alert"></div>
+	<br>
+	<div><h3>DATOS DEL PROYECTO</h3></div>
+	<br>
+	<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+	<input type="number" name="id" th:value="${id != null}? ${id}: ''" placeholder="id" hidden="hidden">
+		<div class="row">
+			<div class="col-3">
+				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+		  			<a class="nav-link active" id="v-pills-title-tab" data-toggle="pill" href="#v-pills-title" role="tab" aria-controls="v-pills-title" aria-selected="true">Titulo</a>
+		  			<a class="nav-link" id="v-pills-problem-tab" data-toggle="pill" href="#v-pills-problem" role="tab" aria-controls="v-pills-problem" aria-selected="false">Planteamiento del Problema</a>
+		  			<a class="nav-link" id="v-pills-justification-tab" data-toggle="pill" href="#v-pills-justification" role="tab" aria-controls="v-pills-justification" aria-selected="false">Justificación</a>
+		  			<a class="nav-link" id="v-pills-general_aim-tab" data-toggle="pill" href="#v-pills-general_aim" role="tab" aria-controls="v-pills-general_aim" aria-selected="false">Objetivo General</a>
+		  			<a class="nav-link" id="v-pills-specific_aim-tab" data-toggle="pill" href="#v-pills-specific_aim" role="tab" aria-controls="v-pills-specific_aim" aria-selected="false">Objetivo Específico</a>
+		  			<a class="nav-link" id="v-pills-hypothesis-tab" data-toggle="pill" href="#v-pills-hypothesis" role="tab" aria-controls="v-pills-hypothesis" aria-selected="false">Hipotesis</a>
+		  			<a class="nav-link" id="v-pills-theory-tab" data-toggle="pill" href="#v-pills-theory" role="tab" aria-controls="v-pills-theory" aria-selected="false">Marco Teórico</a>
+		  			<a class="nav-link" id="v-pills-methodology-tab" data-toggle="pill" href="#v-pills-methodology" role="tab" aria-controls="v-pills-methodology" aria-selected="false">Metodologia</a>
+		  			<a class="nav-link" id="v-pills-schedule-tab" data-toggle="pill" href="#v-pills-schedule" role="tab" aria-controls="v-pills-schedule" aria-selected="false">Calendario de Actividades</a>
+		  			<a class="nav-link" id="v-pills-budget-tab" data-toggle="pill" href="#v-pills-budget" role="tab" aria-controls="v-pills-budget" aria-selected="false">Presupuesto</a>
+		  			<a class="nav-link" id="v-pills-bibliography-tab" data-toggle="pill" href="#v-pills-bibliography" role="tab" aria-controls="v-pills-bibliography" aria-selected="false">Bibliografía</a>
+		  			<a class="nav-link" id="v-pills-annexes-tab" data-toggle="pill" href="#v-pills-annexes" role="tab" aria-controls="v-pills-annexes" aria-selected="false">Anexos</a>
+		 
+		  			<a class="nav-link" id="v-pills-submit-tab" data-toggle="pill" href="#v-pills-submit" role="tab" aria-controls="v-pills-submit" aria-selected="false">Enviar a Revision</a>
+			   </div>
+		   </div>
+		   <div class="col-9">
+			   <div class="tab-content" id="v-pills-tabContent">
+			    <div class="tab-pane fade show active" id="v-pills-title" role="tabpanel" aria-labelledby="v-pills-title-tab"><input type="text" class="form-control" name="title"  th:value="${project.title != null}? ${project.title}: ''" th:readonly="${project.title != null AND project.title != ''}" placeholder="Título"></div>
+		        <!--<div class="tab-pane fade" id="v-pills-problem" role="tabpanel" aria-labelledby="v-pills-problem-tab"><input type="text" class="form-control" name="problem" th:value="${project.problem != null}? ${project.problem}: ''" th:readonly="${project.problem != null AND project.problem != ''}" placeholder="Planteamiento del Problema"></div> -->
+		        <div class="tab-pane fade" id="v-pills-problem" role="tabpanel" aria-labelledby="v-pills-problem-tab"><textarea class="form-control" id="detalles" rows="7" name="problem" th:text="${project.problem != null}? ${project.problem}: ''" th:readonly="${project.problem != null AND project.problem != ''}" placeholder="Planteamiento del Problema"></textarea></div>
+		       	<div class="tab-pane fade" id="v-pills-justification" role="tabpanel" aria-labelledby="v-pills-justification-tab"><input type="text" class="form-control" name="justification" th:value="${project.justification != null}? ${project.justification}: ''" th:readonly="${project.justification != null AND project.justification != ''}"placeholder="Justificación"></div>
+				<div class="tab-pane fade" id="v-pills-general_aim" role="tabpanel" aria-labelledby="v-pills-general_aim-tab"><input type="text" class="form-control" name="general_aim" th:value="${project.general_aim != null}? ${project.general_aim}: ''" th:readonly="${project.general_aim != null AND project.general_aim != ''}" placeholder="Objetivo General"></div>
+				<div class="tab-pane fade" id="v-pills-specific_aim" role="tabpanel" aria-labelledby="v-pills-specific_aim-tab"><input type="text" class="form-control" name="specific_aim" th:value="${project.specific_aim != null}? ${project.specific_aim}: ''" th:readonly="${project.specific_aim != null AND project.specific_aim != ''}" placeholder="Objetivo Específico"></div>
+				<div class="tab-pane fade" id="v-pills-hypothesis" role="tabpanel" aria-labelledby="v-pills-hypothesis-tab"><input type="text" class="form-control" name="hypothesis" th:value="${project.hypothesis != null}? ${project.hypothesis}: ''" th:readonly="${project.hypothesis != null AND project.hypothesis != ''}" placeholder="Hipotesis"></div>
+				<div class="tab-pane fade" id="v-pills-theory" role="tabpanel" aria-labelledby="v-pills-theory-tab"><input type="text" class="form-control" name="theory" th:value="${project.theory != null}? ${project.theory}: ''" th:readonly="${project.theory != null AND project.theory != ''}" placeholder="Marco Teórico"></div>
+				<div class="tab-pane fade" id="v-pills-methodology" role="tabpanel" aria-labelledby="v-pills-methodology-tab"><input type="text" class="form-control" name="methodology" th:value="${project.methodology != null}? ${project.methodology}: ''" th:readonly="${project.methodology != null AND project.methodology != ''}" placeholder="Metodología"></div>
+				<div class="tab-pane fade" id="v-pills-schedule" role="tabpanel" aria-labelledby="v-pills-schedule-tab"><input type="text" class="form-control" name="schedule" th:value="${project.schedule != null}? ${project.schedule}: ''" th:readonly="${project.schedule != null AND project.schedule != ''}" placeholder="Calendario de Actividades"></div>			
+				<div class="tab-pane fade" id="v-pills-budget" role="tabpanel" aria-labelledby="v-pills-budget-tab"><input type="number" class="form-control" name="budget" th:value="${project.budget != null}? ${project.budget}: ''" th:readonly="${project.budget != null AND project.budget != ''}" placeholder="Presupuesto"></div>
+				<div class="tab-pane fade" id="v-pills-bibliography" role="tabpanel" aria-labelledby="v-pills-bibliography-tab"><input type="text" class="form-control" name="bibliography" th:value="${project.bibliography != null}? ${project.bibliography}: ''" th:readonly="${project.bibliography != null AND project.bibliography != ''}" placeholder="Bibliografía"></div>
+				<div class="tab-pane fade" id="v-pills-annexes" role="tabpanel" aria-labelledby="v-pills-annexes-tab"><input type="text" class="form-control" name="annexes" th:value="${project.annexes != null}? ${project.annexes}: ''" th:readonly="${project.annexes != null AND project.annexes != ''}" placeholder="Anexos"></div>
+		       	
+		       	<div class="tab-pane fade" id="v-pills-submit" role="tabpanel" aria-labelledby="v-pills-submit-tab"><button type="submit" class="btn btn-primary">Enviar a Revisión</button></div>
+		   </div>
+		 </div>
+		 </div>
+	</form>
+	</main>
+
+	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>    
+    <script th:src="@{/tinymce/tinymce.min.js}"></script>
+</body>
+<script>
+	$(document).ready(function() {
+		$(".nav-tabs a").click(function() {
+			$(this).tab('show');
+		});
+		$('.nav-tabs a').on('shown.bs.tab', function(event) {
+			var x = $(event.target).text();
+			var y = $(event.relatedTarget).text();
+			$(".act span").text(x);
+			$(".prev span").text(y);
+		});
+	});
+</script>
+<script>
+      
+      $(function () {
+          $("#fecha").datepicker({dateFormat: 'dd-mm-yy'});
+        }
+      );
+      
+      tinymce.init({
+          selector: '#detalles',
+          plugins: "textcolor, table lists code",
+          toolbar: " undo redo | bold italic | alignleft aligncenter alignright alignjustify \n\
+                    | bullist numlist outdent indent | forecolor backcolor table code"
+      });      
+</script>
+</html>

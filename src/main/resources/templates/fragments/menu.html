@@ -1,0 +1,27 @@
+<nav th:fragment="menu-principal" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<a class="navbar-brand" th:href="@{/}">FACULTAD DE AGRONOMIA</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarsExampleDefault"
+		aria-controls="navbarsExampleDefault" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE')">
+				<a class="nav-link active" href="/proyectos/opciones">Proyectos</a>
+			</li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR')">
+				<a class="nav-link" th:href="@{/usuarios/lista}">Usuarios</a>
+			</li>
+			<li class="nav-item" sec:authorize="hasAnyAuthority('ADMINISTRADOR', 'DOCENTE', 'ESTUDIANTE')">
+				<a class="nav-link" th:href="@{/configuracion/profile}">Configuracion</a>
+			</li>
+		</ul>
+		<div sec:authorize="isAuthenticated()">
+			<span class="text-light">Bienvenido &#32;</span><span class="text-light" sec:authentication="name"></span>
+			<a class="btn btn-primary" th:href="@{/logout}">Salir</a>
+		</div>
+	</div>
+</nav>

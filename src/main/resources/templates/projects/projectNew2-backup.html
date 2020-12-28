@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="favicon.ico">
+
+<title>Facultad de Agronomía | Listado de Proyectos</title>
+<!-- Bootstrap core CSS -->
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+	rel="stylesheet">
+</head>
+
+<body>
+	<header th:insert="fragments/menu :: menu-principal"></header>
+	<main role="main">
+		<hr>
+		<div class="container">
+
+			<div th:if="${msg != null}" class="alert alert-danger"
+				th:text="${msg}" role="alert"></div>
+				
+			<div>
+				<h1>DATOS DEL PROYECTO</h1>
+			</div>
+			<div id="accordion">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h5 class="mb-0">
+							<button class="btn btn-link" data-toggle="collapse"
+								data-target="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne">TITULO</button>
+						</h5>
+					</div>
+					
+					<div id="collapseOne" class="collapse"
+						aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
+							<div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="title" placeholder="Títutlo"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">	
+					<div class="card-header" id="headingTwo">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseTwo" aria-expanded="false"
+								aria-controls="collapseTwo">PLANTEAMIENTO DEL PROBLEMA</button>
+						</h5>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+						data-parent="#accordion">
+						<div class="card-body">
+							<div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="problem" placeholder="Planteamiento del Problema"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingThree">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseThree" aria-expanded="false"
+								aria-controls="collapseThree">JUSTIFICACIÓN
+							</button>
+						</h5>
+					</div>
+					<div id="collapseThree" class="collapse"
+						aria-labelledby="headingThree" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="justification" placeholder="Justificación"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingFour">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseFour" aria-expanded="false"
+								aria-controls="collapseFour">OBJETIVO GENERAL
+							</button>
+						</h5>
+					</div>
+					<div id="collapseFour" class="collapse"
+						aria-labelledby="headingFour" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="general_aim" placeholder="Objetivo General"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingFive">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseFive" aria-expanded="false"
+								aria-controls="collapseFive">OBJETIVO ESPECÍFICO
+							</button>
+						</h5>
+					</div>
+					<div id="collapseFive" class="collapse"
+						aria-labelledby="headingFive" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="specific_aim" placeholder="Objetivo Específico"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingSix">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseSix" aria-expanded="false"
+								aria-controls="collapseSix">HIPOTESIS
+							</button>
+						</h5>
+					</div>
+					<div id="collapseSix" class="collapse"
+						aria-labelledby="headingSix" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="hypothesis" placeholder="theory"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingSeven">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseSeven" aria-expanded="false"
+								aria-controls="collapseSeven">MARCO TEÓRICO
+							</button>
+						</h5>
+					</div>
+					<div id="collapseSeven" class="collapse"
+						aria-labelledby="headingSeven" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="theory" placeholder="Hipotesis"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-header" id="headingEight">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseEight" aria-expanded="false"
+								aria-controls="collapseEight">METODOLOGIA
+							</button>
+						</h5>
+					</div>
+					<div id="collapseEight" class="collapse"
+						aria-labelledby="headingEight" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="methodology" placeholder="Metodología"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card">
+					<div class="card-header" id="headingNine">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseNine" aria-expanded="false"
+								aria-controls="collapseNine">CALENDARIO DE ACTIVIDADES
+							</button>
+						</h5>
+					</div>
+					<div id="collapseNine" class="collapse"
+						aria-labelledby="headingNine" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="schedule" placeholder="Calendario de Actividades"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-header" id="headingTen">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseTen" aria-expanded="false"
+								aria-controls="collapseTen">PRESUPUESTO
+							</button>
+						</h5>
+					</div>
+					<div id="collapseTen" class="collapse"
+						aria-labelledby="headingTen" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="budget" placeholder="Presupuesto"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-header" id="headingEleven">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseEleven" aria-expanded="false"
+								aria-controls="collapseEleven">BIBLIOGRAFIA
+							</button>
+						</h5>
+					</div>
+					<div id="collapseEleven" class="collapse"
+						aria-labelledby="headingEleven" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="bibliography" placeholder="Bibliografía"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="card">
+					<div class="card-header" id="headingEleven">
+						<h5 class="mb-0">
+							<button class="btn btn-link collapsed" data-toggle="collapse"
+								data-target="#collapseTwelve" aria-expanded="false"
+								aria-controls="collapseTwelve">ANEXOS
+							</button>
+						</h5>
+					</div>
+					<div id="collapseTwelve" class="collapse"
+						aria-labelledby="headingTwelve" data-parent="#accordion">
+						<div class="card-body"><div class="form-group">
+								<form th:action="@{/proyectos/guardar}" method="post" th:object="${Project}">
+									<input type="text" class="form-control" name="annexes" placeholder="Anexos"><br>
+									<button type="submit" class="btn btn-primary">Enviar a Revisión</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+		<!-- /container -->
+	</main>
+
+	<footer th:insert="fragments/footer :: pie-pagina" class="footer"></footer>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
